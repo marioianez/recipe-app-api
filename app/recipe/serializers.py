@@ -101,15 +101,4 @@ class RecipeImageSerializer(serializers.ModelSerializer):
         model = Recipe
         fields = ['id', 'image']
         read_only_fields = ['id']
-        "extra_kwargs = {'image': {'required': 'True'}}"
-
-    def save(self, **kwargs):
-        """Save the image to the recipe."""
-        recipe = kwargs.get('recipe')
-        image = self.validated_data['image']
-
-        # Guarda la imagen en el campo de imagen de la receta
-        recipe.image = image
-        recipe.save()
-
-        return recipe
+        extra_kwargs = {'image': {'required': 'True'}}
